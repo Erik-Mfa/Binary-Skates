@@ -1,5 +1,5 @@
 const userModel = require('../models/User');
-const auth = require('../middleware/auth/auth.js');
+const auth = require('../middlewares/auth/auth.js');
 const bcryptjs = require('bcryptjs');
 
 class LoginController {
