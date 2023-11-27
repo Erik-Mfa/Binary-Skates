@@ -36,7 +36,7 @@ class ProductController{
     }
 
     async find(req, res){
-        const result = await productModel.find({});
+        const result = await productModel.find({}).populate('category');;
         res.status(200).json(result);
     }
 
