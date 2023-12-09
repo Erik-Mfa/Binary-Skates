@@ -1,4 +1,5 @@
 const userModel = require('../models/User');
+const bcryptjs = require('bcryptjs');
 const auth = require('../middlewares/auth/auth.js');
 
 class UserController{
@@ -28,6 +29,12 @@ class UserController{
     async update(req, res) {
         const id = req.params.id;
         const _id = String((await userModel.findOne({ 'id': id }))._id);
+
+        if (req.body.password) {
+            const hash = await bcryptjs.hash(String(req.body.password), 10);
+            req.body.password = hash;
+        }
+
         await userModel.findByIdAndUpdate(String(_id), req.body);
         res.status(200).send();
     }

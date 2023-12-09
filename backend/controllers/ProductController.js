@@ -1,20 +1,21 @@
 const productModel = require('../models/Product');
+const categoryModel = require('../models/Category');
 
 class ProductController{
     async post(req, res){
         try{
             var product = req.body;
-            const id = req.body.id;
+            const max = await productModel.findOne({}).sort({ id: -1 });
+            product.id = max == null ? 1 : max.id + 1;
 
             if(req.file){
                 product.image = req.file.path
             } 
             
-            const create = await productModel.create(product);
+            const category = await categoryModel.findOne({ id: product.category });
+            product.category = category._id;
 
-            const find = await productModel.findOne({ 'id': id });
-            const result = await find.save();
-
+            const result = await productModel.create(product);
             res.status(201).json(result);
         }
         catch(err){
@@ -31,6 +32,10 @@ class ProductController{
         } 
 
         const _id = String((await productModel.findOne({ 'id': id }))._id);
+
+        const category = await categoryModel.findOne({ id: product.category });
+        product.category = category._id;
+
         await productModel.findByIdAndUpdate(String(_id), product);
         res.status(200).send();
     }
