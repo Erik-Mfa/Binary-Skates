@@ -19,34 +19,43 @@ async function generateHash(user) {
   return user;
 }
 
-function authorise(req, res, next) {
+async function authorise(req, res, next) {
+  
   const authHeader = req.headers.authorization;
-
-  if (!authHeader) {
-    return res.status(401).send({ error: 'Token not sent!' });
-  }
-
-  const pieces = authHeader.split(' ');
-
-  if (pieces && pieces.length !== 2) {
-    return res.status(401).send({ error: 'Incomplete Token!' });
-  }
-
-  const [type, token] = pieces;
-
-  if (!/^Bearer$/i.test(type)) {
-    return res.status(401).send({ error: 'Bad Format Token!' });
-  }
-
-  jwt.verify(token, auth.secret, (err, user) => {
-    if (err) {
-      return res.status(401).send({ error: 'Invalid Token!' });
-      
+  console.log(authHeader);
+  try{  
+    
+    
+    if (!authHeader) {
+      return res.status(401).send({ error: 'Token not sent!' });
     }
-    req.user = user.id;
-    return next();
-  });
-  console.log(req.userLogado)
+
+    const pieces = authHeader.split(' ');
+
+    if (pieces && pieces.length !== 2) {
+      return res.status(401).send({ error: 'Incomplete Token!' });
+    }
+
+    const [type, token] = pieces;
+
+    if (!/^Bearer$/i.test(type)) {
+      return res.status(401).send({ error: 'Bad Format Token!' });
+    }
+
+    jwt.verify(token, auth.secret, (err, user) => {
+      if (err) {
+        return res.status(401).send({ error: 'Invalid Token!' });
+        
+      }
+      req.user = user.id;
+      return next();
+    });
+    
+    
+
+  } catch(err){
+    console.log(err)
+  }
 }
 
 module.exports = {
