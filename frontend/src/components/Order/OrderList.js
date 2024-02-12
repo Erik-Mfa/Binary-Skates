@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const OrderList = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -20,18 +20,19 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Order List</h2>
-      <ul>
-        {orders.map((order) => (
-          <li key={order.id}>
-            <Link to={`/order/${order.id}`}>
-              {order.name} - {order.status}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <h2>Order List</h2>
+    <ul>
+      {orders.map((order) => (
+        <li key={order._id}>
+          <Link to={`/order/${order.id}`}>
+            Id: {order.id}
+          </Link>
+          <p>User: {order.user.name}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
   );
 };
 
-export default Home;
+export default OrderList;

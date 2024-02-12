@@ -25,7 +25,9 @@ const OrderDetail = () => {
       <h2>Order Detail</h2>
       {order ? (
         <div>
-          <h3>{order.name}</h3>
+          <h3>Item name: {order.product.name}</h3>
+          <h4>User: {order.user.name}</h4>
+          <p>Item price: {order.product.price}</p>
           <p>Status: {order.status}</p>
         </div>
       ) : (
@@ -33,6 +35,7 @@ const OrderDetail = () => {
       )}
     </div>
   );
+
 };
 
 export default OrderDetail;
