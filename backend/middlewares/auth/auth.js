@@ -58,7 +58,16 @@ async function authorise(req, res, next) {
   }
 }
 
+async function isAdmin(user, req, res, next){
+  if(user.level == "admin"){
+    next();
+  } else {
+    return res.status(401).send({ error: 'User not admin!' });
+  }
+}
+
 module.exports = {
+  isAdmin,
   generateHash,
   includeToken,
   authorise

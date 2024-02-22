@@ -3,16 +3,16 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
+const SidebarList = () => {
+  const [categorys, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/product');
+        const response = await axios.get('http://localhost:3001/category');
         setProducts(response.data);
       } catch (error) {
-        console.error('Error fetching products:', error.message);
+        console.error('Error fetching categorys:', error.message);
       }
     };
 
@@ -21,12 +21,12 @@ const ProductList = () => {
 
   return (
     <ListGroup>
-      {products.map((product) => (
+      {categorys.map((category) => (
         <ListGroup.Item
-        key={product._id}>
-          <Link to={`/product/${product.id}`}>
-            Id: {product.id}
-            Name: {product.name}
+        key={category._id}>
+          <Link to={`/category/${category.id}`}>
+            Id: {category.id}
+            Name: {category.name}
           </Link>
         </ListGroup.Item>
       ))}
@@ -36,4 +36,4 @@ const ProductList = () => {
 };
 
 
-export default ProductList;
+export default SidebarList;
