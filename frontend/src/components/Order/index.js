@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -21,18 +20,17 @@ const OrderList = () => {
 
   return (
     <div className="max-w-xs mx-auto p-4 border border-gray-300 rounded shadow-md">
-    <ListGroup>
-      {orders.map((order) => (
-        <ListGroup.Item
-        key={order._id}>
-          Id: {order.id}
-          <Link to={`/order/${order.id}`}>
-            Name {order.name}
-          </Link>
-        </ListGroup.Item>
-      ))}
-
-    </ListGroup>
+      <ul className="divide-y divide-gray-200">
+        <h1>Orders:</h1>
+        {orders.map((order) => (
+          <li key={order._id} className="py-4">
+            <Link to={`/order/${order.id}`} className="text-indigo-600 hover:text-indigo-900">
+              <p className="font-semibold">Id: {order.id}</p>
+              <p>Name: {order.user.name}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

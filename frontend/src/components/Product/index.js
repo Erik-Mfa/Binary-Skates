@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -20,20 +19,20 @@ const ProductList = () => {
   }, []);
 
   return (
-    <ListGroup>
-      {products.map((product) => (
-        <ListGroup.Item
-        key={product._id}>
-          <Link to={`/product/${product.id}`}>
-            Id: {product.id}
-            Name: {product.name}
-          </Link>
-        </ListGroup.Item>
-      ))}
-
-    </ListGroup>
+    <div className="max-w-xs mx-auto p-4 border border-gray-300 rounded shadow-md">
+      <ul>
+        <h1>Products</h1>
+        {products.map((product) => (
+          <li key={product._id} className="mb-2">
+            <Link to={`/product/${product.id}`} className="text-indigo-600 hover:text-indigo-900">
+              <p className="font-semibold">Id: {product.id}</p>
+              <p>Name: {product.name}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
-
 
 export default ProductList;
