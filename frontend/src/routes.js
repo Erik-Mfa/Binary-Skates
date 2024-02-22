@@ -8,8 +8,8 @@ import Product from './pages/product';
 export default function RoutesConfig() {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/product/" element={<Product />} />
             <Route path="/order/:id" element={<Order />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<div>Not Found</div>} />

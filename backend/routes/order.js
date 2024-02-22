@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth/auth.js');
 
 router.get('/', OrderController.find);
 router.get('/:id',OrderController.findById);
-router.post('/', auth.authorise, OrderController.save);
+router.post('/', auth.authorise, auth.isAdmin, OrderController.save);
 router.put('/:id', OrderController.update);
 router.delete('/:id', OrderController.delete);
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductDetail from '../components/Product/ProductDetail';
+import ProductList from '../components/Product/index';
 
 export default function Product() {
     return (
         <div>
-            <ProductDetail />
+            <ProductList />
         </div>
     )
 }
