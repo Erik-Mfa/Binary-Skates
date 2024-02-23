@@ -4,7 +4,7 @@ const auth = require('./auth.json');
 const bcryptjs = require('bcryptjs');
 
 async function includeToken(user) {
-  const token = await jwt.sign({ id: user.id }, auth.secret, {
+  const token = await jwt.sign({ user }, auth.secret, {
     expiresIn: 1800
   });
   user.token = token;

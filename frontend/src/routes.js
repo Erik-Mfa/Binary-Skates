@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/home';
 import Login from './pages/login';
 import Order from './pages/order';
@@ -12,7 +12,7 @@ export default function RoutesConfig() {
             <Route path="/product/" element={<Product />} />
             <Route path="/order/:id" element={<Order />} />
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<div>Not Found</div>} />
+            <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
         
     );

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { login } from '../../services/auth';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
+import {jwtDecode} from "jwt-decode";
 
 const LoginForm = () => {
+  const cookies = new Cookies();
+
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+
+  const decoded = jwtDecode(cookies.get('jwt_authorization'))
+  console.log(decoded.user.id)
 
   const handleLogin = async () => {
     try {
       const token = await login(credentials);
-      // Save the token in local storage or a secure cookie
       console.log('Token:', token);
+
       navigate("/home");
     } catch (error) {
     }
