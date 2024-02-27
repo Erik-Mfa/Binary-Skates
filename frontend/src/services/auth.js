@@ -19,15 +19,15 @@ export const login = async (credentials) => {
 export const isAuthenticated = () => {
   const cookie = cookies.get('jwt_authorization');
   if (!cookie) {
-    return false; // No JWT token found
+    return false; 
   }
   
   try {
     const decoded = jwtDecode(cookie);
     const id = decoded.user.id;
-    return !!id; // Return true if user ID exists
+    return !!id; 
   } catch (error) {
     console.error('Error decoding JWT token:', error.message);
-    return false; // Return false in case of decoding error
+    return false; 
   }
 };

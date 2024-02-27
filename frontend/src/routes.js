@@ -9,7 +9,7 @@ export default function RoutesConfig() {
     return (
         <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/product/" element={<Product />} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path="/order/:id" element={<Order />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<Navigate to="/login" />} />
