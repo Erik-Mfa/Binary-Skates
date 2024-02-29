@@ -24,8 +24,24 @@ export const isAuthenticated = () => {
   
   try {
     const decoded = jwtDecode(cookie);
-    const id = decoded.user.id;
-    return !!id; 
+    const name = decoded.user.name;
+    return name; 
+  } catch (error) {
+    console.error('Error decoding JWT token:', error.message);
+    return false; 
+  }
+};
+
+export const isAdmin = () => {
+  const cookie = cookies.get('jwt_authorization');
+  if (!cookie) {
+    return false; 
+  }
+  
+  try {
+    const decoded = jwtDecode(cookie);
+    const admin = decoded.user.admin;
+    return !!admin; 
   } catch (error) {
     console.error('Error decoding JWT token:', error.message);
     return false; 
