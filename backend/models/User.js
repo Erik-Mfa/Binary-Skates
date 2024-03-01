@@ -21,8 +21,8 @@ const userSchema = new Schema({
     image: {
         type: String
     },
-    level: {
-      type: String  ,
+    admin: {
+      type: Boolean,
       required: true
     },
     registerDate: {

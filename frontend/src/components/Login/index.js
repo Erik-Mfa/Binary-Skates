@@ -8,9 +8,8 @@ const LoginForm = () => {
 
   const handleLogin = async () => {
     try {
-      const token = await login(credentials);
-      // Save the token in local storage or a secure cookie
-      console.log('Token:', token);
+      await login(credentials);
+      
       navigate("/home");
     } catch (error) {
     }
