@@ -1,14 +1,14 @@
 import React from 'react';
-import HeaderContent from '../Navbar/index';
+import Navbar from '../Navbar/index';
 import ProductList from '../Product/index';
 import OrderList from '../Order/index';
-import SidebarList from '../Sidebar/index';
+import Sidebar from '../Sidebar/index';
 
 const HomePage = () => {
    return (
         <div>
-            <HeaderContent />
-            <SidebarList />
+            <Navbar />
+            <Sidebar />
             <ProductList />
             <OrderList />
         </div>

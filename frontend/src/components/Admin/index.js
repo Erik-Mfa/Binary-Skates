@@ -14,8 +14,6 @@ export const Admin = () => {
     }
     };
 
-    
-
   return (
     <div className="max-w-xs mx-auto p-4 border border-gray-300 rounded shadow-md">
       <form>
@@ -96,6 +94,7 @@ export const Admin = () => {
       </form>
     </div>
   );
+  
 };
 
 export default Admin;

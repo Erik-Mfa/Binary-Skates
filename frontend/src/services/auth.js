@@ -24,8 +24,8 @@ export const isAuthenticated = () => {
   
   try {
     const decoded = jwtDecode(cookie);
-    const name = decoded.user.name;
-    return name; 
+    const user = decoded.user;
+    return user; 
   } catch (error) {
     console.error('Error decoding JWT token:', error.message);
     return false; 
