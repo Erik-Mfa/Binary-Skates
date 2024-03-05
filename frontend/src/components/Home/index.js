@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar/index';
+import Header from '../Header/index';
 import ProductList from '../Product/index';
 import OrderList from '../Order/index';
 import Sidebar from '../Sidebar/index';
@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar/index';
 const HomePage = () => {
    return (
         <div>
-            <Navbar />
+            <Header />
             <Sidebar />
             <ProductList />
             <OrderList />
