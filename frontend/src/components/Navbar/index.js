@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import {useNavigate } from 'react-router-dom';
-import Cookies from 'universal-cookie';
-import { isAuthenticated } from '../../services/auth';
+import {useFloating} from '@floating-ui/react';
 
 const Navbar = () => {
+  const {refs, floatingStyles} = useFloating();
+
   return (
     <div className="container mx-auto">
       <nav className="flex justify-center items-center">
@@ -17,7 +17,13 @@ const Navbar = () => {
           <Link to="/login" className="text-white hover:text-gray-200">Appareal</Link>
         </li>
         <li>
-          <Link to="/login" className="text-white hover:text-gray-200">Old</Link>
+          <Link to="/login" className="text-white hover:text-gray-200">Skateboards</Link>
+        </li>
+        <li>
+          <Link to="/login" className="text-white hover:text-gray-200">Footwear</Link>
+        </li>
+        <li>
+          <Link to="/login" className="text-white hover:text-gray-200">Sale</Link>
         </li>
 
       </ul>

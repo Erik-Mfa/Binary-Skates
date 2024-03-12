@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 import { isAuthenticated } from '../../services/auth';
+import Cookies from 'universal-cookie';
 import Navbar from '../Navbar/index';
-
 
 const Header = () => {
     const navigate = useNavigate(); 
@@ -46,8 +45,6 @@ const Header = () => {
 
             <Navbar/>
 
-            {authenticated ? 
-            <li>Welcome, {authenticated.name}</li> : ""}
             <li>
                 <Link to="/login" className="text-white hover:text-gray-200">Login</Link>
             </li>
@@ -56,9 +53,11 @@ const Header = () => {
                 <Link to="/admin" className="text-white hover:text-gray-200">Admin</Link>
             </li> : ""
             }
-            <button onClick={useLogout}>
-                Logout
-            </button>
+            <li>
+                <button onClick={useLogout} className="text-white hover:text-gray-200">Logout</button>
+            </li>
+            {authenticated ? 
+            <li className='text-sm'>Welcome, {authenticated.name}</li> : ""}
         </ul>
         </div>
     </header>

@@ -4,6 +4,7 @@ import { isAdmin, isAuthenticated } from './services/auth';
 import RoutesConfig from './routes';
 
 const admin = isAdmin();
+if(admin){ console.log("NO APP TMB TA VOLTANDO")}
 const authenticated = isAuthenticated();
 
 function App() {

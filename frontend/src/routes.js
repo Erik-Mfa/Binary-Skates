@@ -1,17 +1,18 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/home';
-import Admin from './pages/admin';
-import Login from './pages/login';
-import Order from './pages/order';
-import Product from './pages/product';
+import HomePage from './pages/home';
+import AdminPage from './pages/admin';
+import LoginPage from './pages/login';
+import OrderPage from './pages/order';
+import ProductPage from './pages/product';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function RoutesConfig({checkAdmin, checkAuthenticated}) {
     return (
+        
         <Routes>
-            <Route index element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route index element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
     
             {/* the admin route leads to the protected route component, which validates the user */}
             <Route 
@@ -21,14 +22,14 @@ export default function RoutesConfig({checkAdmin, checkAuthenticated}) {
                 isAllowed={checkAdmin} 
                 isAuthenticated={checkAuthenticated}
                 redirectTo='/home'>
-                    <Admin/>
+                    <AdminPage/>
                 </ProtectedRoute>
             }/>
             
 
-            <Route path="/product/:id" element={<Product />} />
-            <Route path="/order/:id" element={<Order />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/order/:id" element={<OrderPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
         

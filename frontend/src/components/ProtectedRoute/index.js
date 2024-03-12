@@ -7,6 +7,7 @@ if (!isAuthenticated) {
     return <Navigate to={redirectTo} />
     }
 
+//CHEKCS PARAMTER ROUTER
  if (!isAllowed) {
     console.log("user not admin");
     return <Navigate to={redirectTo} />

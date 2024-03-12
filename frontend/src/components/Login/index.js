@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { login } from '../../services/auth';
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
@@ -55,4 +55,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;

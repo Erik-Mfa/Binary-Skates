@@ -1,11 +1,13 @@
 import React from 'react';
-import HomePage from '../components/Home/index';
+import Header from '../components/Header/index';
+import Sidebar from '../components/Sidebar/index';
 
-export default function Home() {
+export default function HomePage() {
     
     return (
         <div>
-            <HomePage />
+            <Header />
+            <Sidebar />
         </div>
     )
 }
