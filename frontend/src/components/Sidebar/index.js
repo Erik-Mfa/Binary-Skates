@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const SidebarList = () => {
+const Sidebar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const SidebarList = () => {
   );
 };
 
-export default SidebarList;
+export default Sidebar;

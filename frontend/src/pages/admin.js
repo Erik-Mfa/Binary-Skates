@@ -1,11 +1,13 @@
 import React from 'react';
-import AdminPage from '../components/Admin/index';
+import Admin from '../components/Admin/index';
+import Header from '../components/Header/index';
 
-export default function Admin() {
+export default function AdminPage() {
     
     return (
         <div>
-            <AdminPage />
+            <Header />
+            <Admin />
         </div>
     )
 }
