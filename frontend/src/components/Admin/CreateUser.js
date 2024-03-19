@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateUser = () => {
+export default function CreateUser () {
     const [users, setUsers] = useState({ name: '', email: '', phone: '', adress: '', admin: '', password: '' });
   
     const userPost = async () => {
@@ -97,4 +97,3 @@ const CreateUser = () => {
   
 }
 
-export default CreateUser;

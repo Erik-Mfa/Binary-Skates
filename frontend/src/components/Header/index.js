@@ -15,7 +15,6 @@ const Header = () => {
                 const authName = await isAuthenticated();//CHECK JWT COOKIE
                 setAuthenticated(authName);
                 // setIsLoading(false);
-                console.log("Nome: " + authName);
             } catch (error) {
                 console.error('Error checking authentication:', error.message);
                 // setIsLoading(false);
