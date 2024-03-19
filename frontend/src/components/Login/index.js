@@ -7,12 +7,11 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      await login(credentials);
-      
-      navigate("/home");
-    } catch (error) {
-    }
+    const logged = await login(credentials);
+
+    if(!!logged){
+      console.log("logged: " + logged)
+    navigate("/home")}
   };
 
   return (
@@ -45,7 +44,7 @@ const Login = () => {
         <button
           type="button"
           id="button"
-          onClick={handleLogin}
+          onClick={handleLogin} //performs login
           className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
           Login

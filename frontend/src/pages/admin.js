@@ -1,13 +1,20 @@
 import React from 'react';
-import Admin from '../components/Admin/index';
+import { Outlet } from 'react-router-dom';
+// import CreateUser from '../components/Admin/CreateUser';
+import AdminSidebar from '../components/Admin/AdminSidebar';
 import Header from '../components/Header/index';
 
 export default function AdminPage() {
     
-    return (
-        <div>
-            <Header />
-            <Admin />
-        </div>
-    )
+    return(
+        <>
+        <Header/>
+        <AdminSidebar/>
+
+        <Outlet />
+        
+        </>
+        )
+                
+    
 }

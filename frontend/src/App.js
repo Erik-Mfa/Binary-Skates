@@ -1,17 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { isAdmin, isAuthenticated } from './services/auth';
 import RoutesConfig from './routes';
+import Cookies from 'universal-cookie';
 
-const admin = isAdmin();
-if(admin){ console.log("NO APP TMB TA VOLTANDO")}
-const authenticated = isAuthenticated();
+import io from "socket.io-client";
 
-function App() {
+const cookies = new Cookies()
+const socket = io.connect("http://localhost:3000")
+
+function App() {  
   return (
     <Router>
       {/* passing the results of the authentication to the routes file */}
-      <RoutesConfig checkAdmin={admin} checkAuthenticated={authenticated}/> 
+      <RoutesConfig/> 
     </Router>     
   );
 }
