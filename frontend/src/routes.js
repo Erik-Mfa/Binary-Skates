@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import {React, useState} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/home';
 import AdminPage from './pages/admin';
@@ -12,17 +12,18 @@ export default function RoutesConfig() {
     const [checkAdmin, setCheckAdmin] = useState(false)
     const [checkAuthenticated, setCheckAuthenticated] = useState(false)
 
-    async function authentication(admin, auth) {
+    //set state consts with validation from Home Page
+    async function Check(admin, auth) {
         await setCheckAdmin(admin)
         await setCheckAuthenticated(auth)
 
-        console.log("Route page admin: "+ admin)
+        console.log("Check: " + admin)
     }
     
     return (
         <Routes>
             <Route index element={<HomePage />} />
-            <Route path="/home" element={<HomePage authentication={authentication}/>} />
+            <Route path="/home" element={<HomePage authentication={Check}/>} />
     
             {/* the admin route leads to the protected route component, which validates the user */}
             <Route 
@@ -45,6 +46,7 @@ export default function RoutesConfig() {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/order/:id" element={<OrderPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
     );
